@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script>
+		function add_image() {
+			let img = document.createElement("img");
+			// The service worker should redirect this request to the actual logo.
+			img.src = "image.svg";
+			img.width = 200;
+			document.getElementById("container").appendChild(img);
+		}
+
+		function register_sw() {
+			navigator.serviceWorker.register('service_worker.js').then(reg => {
+				let on_timer = () => {
+					if (reg.installing) {
+						console.log("Service worker installing");
+						window.setTimeout(on_timer, 1000);
+					} else if (reg.waiting) {
+						console.log("Service worker installed");
+						window.setTimeout(on_timer, 1000);
+					} else if (reg.active) {
+						console.log("Service worker active");
+						add_image();
+					}
+				};
+				on_timer();
+			})
+				.catch((error) => { console.log(error); });
+		}
+		register_sw();
+	</script>
+</head>
+
+<body>
+	<p>A logo of IC will appear below if the service worker works</p>
+	<div id="container"></div>
+</body>
+
+</html>
