@@ -7,7 +7,7 @@
 
 3. Run `npm install` and `node app.js`. This will start a web server at `https://localhost:3000`.
 
-4. Open another terminal and start Chrome with the link to `sxg` file (`--user-data-dir and `ignore-certificate-errors*` are important flags):
+4. Open another terminal and start Chrome with the link to `sxg` file (`--user-data-dir` and `ignore-certificate-errors*` are important flags):
 ```
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/Users/ulan/tmp  --ignore-certificate-errors --ignore-certificate-errors-spki-list="LqdceP9PgoekstR15tKsxeCq5jZsx+NlSpHzPSxs6UM="  https://localhost:3000/sxg/index.sxg
 ```
